@@ -1,0 +1,22 @@
+como abrir o servidor
+
+cmd
+
+cd C:\Users\Casa\Desktop\turcobet_site
+python app.py
+
+ou 
+
+cd C:\Users\Casa\Desktop\turcobet_site
+python -m pip install --upgrade pip
+pip uninstall flask-session
+pip install flask-session
+
+no navegador entre no site abaixo:
+
+http://localhost:5000/
+
+
+cloudflare
+
+Futebol1998!

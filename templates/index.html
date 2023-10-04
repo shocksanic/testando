@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Turco BET</title>
+</head>
+<body style="background-color: #B4E5B9;">
+    <hr>
+    <h1><center>Turco BET</center></h1>
+    <hr>
+    <h2>Jogo dos Dados</h2>
+    <h3>Como funciona?</b></h3>
+    <h4>O jogo de dados é um jogo em que você joga dois dados. Cada dado tem seis faces numeradas de 1 a 6. O objetivo do jogo é obter uma soma específica dos valores dos dados com base em regras simples.</h4>
+    <ul>
+    	<li> Se a soma dos valores dos dois dados for 7 ou 11 no primeiro lançamento, você ganha imediatamente.
+        <li> Se a soma dos valores dos dois dados for 2, 3 ou 12 no primeiro lançamento, você perde imediatamente.
+        <li> Se a soma for qualquer outro número (4, 5, 6, 8, 9 ou 10) no primeiro lançamento, essa soma se torna o "ponto".
+        <li> Nas jogadas seguintes, você continua lançando os dados até obter novamente o "ponto" ou um total de 7.
+        <li> Se você obtiver o "ponto" novamente antes de rolar um 7, você ganha.
+        <li> Se você rolar um 7 antes de obter o "ponto" novamente, você perde.
+
+    </ul>
+
+    <button id="jogar">Jogar dados</button>
+    <div id="resultadoDados"></div> <!-- Div para exibir resultados dos dados -->
+    <div id="resultado"></div>
+    <button id="jogarNovamente" style="display: none;">Jogar novamente</button>
+
+    <script>
+        function jogarDados() {
+            fetch("/jogar_dados")
+            .then(response => response.json())
+            .then(data => {
+                // Exibir resultados dos dados imediatamente antes do resultado do jogo
+                document.getElementById("resultadoDados").textContent = "Dado 1: " + data.dado1 + "   Dado 2: " + data.dado2;
+                document.getElementById("resultado").textContent = data.resultado;
+                document.getElementById("jogar").disabled = true;
+                document.getElementById("jogarNovamente").style.display = "block";
+            });
+        }
+
+        document.getElementById("jogar").addEventListener("click", function() {
+            jogarDados();
+        });
+
+        document.getElementById("jogarNovamente").addEventListener("click", function() {
+            document.getElementById("jogar").disabled = false;
+            document.getElementById("jogarNovamente").style.display = "none";
+            document.getElementById("resultado").textContent = "";
+            document.getElementById("resultadoDados").textContent = "";
+        });
+    </script>
+</body>
+</html>
