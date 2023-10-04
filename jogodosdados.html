@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Turco BET</title>
+</head>
+<body style="background-color: #B4E5B9;">
+    <hr>
+    <h1><center>Turco BET<center></h1>
+    <hr>
+    <h2>Jogo dos Dados</h2>
+    <p>Clique no botão para lançar os dados:</p>
+    <button id="jogarDados">Jogar Dados</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("jogarDados").addEventListener("click", function() {
+            // Simular o lançamento dos dados (números aleatórios de 1 a 6)
+            var dado1 = Math.floor(Math.random() * 6) + 1;
+            var dado2 = Math.floor(Math.random() * 6) + 1;
+
+            // Calcular a soma dos valores dos dados
+            var soma = dado1 + dado2;
+
+            // Exibir o resultado
+            var resultadoTexto = "Dado 1: " + dado1 + "<br>Dado 2: " + dado2 + "<br>Soma: " + soma;
+            document.getElementById("resultado").innerHTML = resultadoTexto;
+
+            // Verificar se o jogador ganhou ou perdeu
+            if (soma === 7 || soma === 11) {
+                document.getElementById("resultado").innerHTML += "<br>Você ganhou!";
+            } else if (soma === 2 || soma === 3 || soma === 12) {
+                document.getElementById("resultado").innerHTML += "<br>Você perdeu!";
+            } else {
+                document.getElementById("resultado").innerHTML += "<br>Você continua jogando. Tente obter a mesma soma novamente ou 7 para ganhar.";
+            }
+        });
+    </script>
+</body>
+</html>
